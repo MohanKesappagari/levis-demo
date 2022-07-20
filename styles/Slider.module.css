@@ -1,0 +1,9 @@
+.slick-prev,
+.slick-next {
+  color: red;
+}
+.slick-prev:before,
+.slick-next:before {
+  color: none;
+  font-size: 2rem;
+}

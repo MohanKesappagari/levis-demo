@@ -2,6 +2,8 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-}
-
-module.exports = nextConfig
+};
+const images = {
+  domains: ["www.levi.com", "lsco.scene7.com"],
+};
+module.exports = { nextConfig, images };
