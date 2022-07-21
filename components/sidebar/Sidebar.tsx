@@ -1,15 +1,19 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { COLORS, STRING } from "../../global/constants";
-import { INVENTORY } from "../../global/constants/inventory";
 interface Props {
   id: string;
   product: any;
 }
 
-export default function Sidebar({ id }: Props) {
+export default function Sidebar({ id, product }: Props) {
   const [color, setColor] = useState("");
-  const product = INVENTORY.filter((val) => val.raw_data.id === id);
+
+  // const [product, setProduct] = useState<any>();
+  // useEffect(() => {
+  //   const pro = INVENTORY.filter((val) => val.raw_data.id === id);
+  //   setProduct(pro);
+  // }, []);
 
   useEffect(() => {
     if (product) {
@@ -34,8 +38,8 @@ export default function Sidebar({ id }: Props) {
         <div className="flex flex-row sm:flex-col">
           <div className="mt-5 text-center">
             <Image
-              src={product[0].raw_data.img_url}
-              alt={STRING(product[0].page_url)}
+              src={product[0]?.raw_data?.img_url}
+              alt={STRING(product[0]?.page_url)}
               width={250}
               height={230}
               objectFit="cover"

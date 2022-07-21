@@ -3,6 +3,7 @@ import { Badge } from "antd";
 import Main from "../../components/product/Main";
 import Similar from "../../components/product/Similar";
 import Sidebar from "../../components/sidebar/Sidebar";
+import { INVENTORY } from "../../global/constants/inventory";
 
 export default function Product({ id, product }: any) {
   return (
@@ -61,8 +62,7 @@ export async function getStaticPaths() {
   };
 }
 export async function getStaticProps({ params }: any) {
-  const product: any = [];
-
+  const product: any = INVENTORY.filter((val) => val.raw_data.id === params.id);
   return {
     props: {
       id: params.id,
