@@ -3,12 +3,12 @@ import { Badge } from "antd";
 import Main from "../../components/product/Main";
 import Similar from "../../components/product/Similar";
 import Sidebar from "../../components/sidebar/Sidebar";
-import { DEMO } from "../../global/constants/demo";
+import { server } from "../../config";
 
-export default function Product({ id }: any) {
+export default function Product({ id, product }: any) {
   return (
     <div className="w-screen h-full sm:h-screen sm:flex">
-      <Sidebar id={id} />
+      <Sidebar id={id} product={product} />
       <div className="max-w-full sm:w-[75%] h-full ">
         <div className="flex justify-between px-5 w-full h-full  sm:h-[10vh]  ">
           <div className="flex text-red mt-3 items-center">
@@ -42,7 +42,9 @@ export default function Product({ id }: any) {
 }
 
 export async function getStaticPaths() {
-  const rec = Object.entries(DEMO).map(([val]) => val);
+  const res = await fetch(`${server}/api/product`);
+  const resJson = await res.json();
+  const rec = Object.entries(resJson).map(([val]) => val);
   const paths = rec.map((val) => ({
     params: { id: val },
   }));
@@ -52,9 +54,12 @@ export async function getStaticPaths() {
   };
 }
 export async function getStaticProps({ params }: any) {
+  const product: any = [];
+
   return {
     props: {
       id: params.id,
+      product,
     },
   };
 }

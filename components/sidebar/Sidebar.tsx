@@ -4,6 +4,7 @@ import { COLORS, STRING } from "../../global/constants";
 import { INVENTORY } from "../../global/constants/inventory";
 interface Props {
   id: string;
+  product: any;
 }
 
 export default function Sidebar({ id }: Props) {
