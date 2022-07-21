@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/react-slick": "^0.23.10",
+    "animate.css": "^4.1.1",
     "antd": "^4.21.7",
     "next": "12.2.2",
     "react": "18.2.0",

@@ -4,6 +4,6 @@ const nextConfig = {
   swcMinify: true,
 };
 const images = {
-  domains: ["www.levi.com", "lsco.scene7.com"],
+  domains: ["www.levi.com", "lsco.scene7.com", "storage.googleapis.com"],
 };
 module.exports = { nextConfig, images };

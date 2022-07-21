@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import Header from "../components/landingpage/header/Header";
-import Sliders from "../components/landingpage/header/Slider";
+import Header from "../components/landingpage/Header";
+import Sliders from "../components/landingpage/Slider";
 
 const Home: NextPage = () => {
   return (
@@ -18,6 +18,7 @@ const Home: NextPage = () => {
           src="/assets/VERA_Images/Mask group@3x-3.png"
           width={1440}
           height={350}
+          alt="landing"
         />
       </div>
       <div className="w-11/12 ml-10">

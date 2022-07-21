@@ -20,7 +20,7 @@ export default function Sidebar({ id }: Props) {
     }
   }, [product]);
   return (
-    <div className="w-full sm:w-[25%]">
+    <div className="max-w-full sm:w-[25%]">
       <div className="w-full h-full sm:h-[12%] text-center ">
         <Image
           alt="logo"
@@ -41,10 +41,8 @@ export default function Sidebar({ id }: Props) {
               className="rounded-3xl"
             />
           </div>
-          <div className=" text-white w-10/12 pl-20 sm:pl-10 space-y-2 mt-2">
-            <p className="text-base sm:text-xl font-medium">
-              {STRING(product[0].page_url)}
-            </p>
+          <div className=" text-white w-10/12 pl-20 sm:pl-10 space-y-2 mt-2 sm:text-sm md:text-base ">
+            <p className=" font-medium">{STRING(product[0].page_url)}</p>
             <p className="">
               Product Code: <strong>{product[0].raw_data.id}</strong>{" "}
             </p>
