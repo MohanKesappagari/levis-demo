@@ -3,7 +3,6 @@ import { Badge } from "antd";
 import Main from "../../components/product/Main";
 import Similar from "../../components/product/Similar";
 import Sidebar from "../../components/sidebar/Sidebar";
-import { server } from "../../config";
 
 export default function Product({ id, product }: any) {
   return (
@@ -42,27 +41,29 @@ export default function Product({ id, product }: any) {
 }
 
 export async function getStaticPaths() {
-  const res = await fetch(`${server}/api/product`);
-  const resJson = await res.json();
-  const rec = Object.entries(resJson).map(([val]) => val);
-  // const rec = [
-  //   "125010369",
-  //   "A20190000",
-  //   "A10580001",
-  //   "A18830002",
-  //   "A18750001",
-  //   "A19070001",
-  // ];
+  // const res = await fetch(`${server}/api/product`);
+  // const resJson = await res.json();
+  // const rec = Object.entries(resJson).map(([val]) => val);
+  const rec = [
+    "125010369",
+    "A20190000",
+    "A10580001",
+    "A18830002",
+    "A18750001",
+    "A19070001",
+  ];
   const paths = rec.map((val) => ({
-    params: { id: val },
+    params: { id: val.toString() },
   }));
   return {
     paths,
-    fallback: true, // false or 'blocking'
+    fallback: false, // false or 'blocking'
   };
 }
 export async function getStaticProps({ params }: any) {
-  const res = await fetch(`${server}/api/inventory`);
+  const res = await fetch(
+    "https://storage.googleapis.com/social_images/levis_ineventory.json"
+  );
   const resJson = await res.json();
   const product: any = resJson.filter(
     (val: any) => val.raw_data.id === params.id
