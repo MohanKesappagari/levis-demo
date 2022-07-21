@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { COLORS, STRING } from "../../global/constants";
 interface Props {
@@ -8,12 +9,9 @@ interface Props {
 
 export default function Sidebar({ id, product }: Props) {
   const [color, setColor] = useState("");
-
-  // const [product, setProduct] = useState<any>();
-  // useEffect(() => {
-  //   const pro = INVENTORY.filter((val) => val.raw_data.id === id);
-  //   setProduct(pro);
-  // }, []);
+  const route = useRouter();
+  //const [product, setProduct] = useState<any>();
+  // const product = INVENTORY.filter((val) => val.raw_data.id === id);
 
   useEffect(() => {
     if (product) {
@@ -69,7 +67,12 @@ export default function Sidebar({ id, product }: Props) {
             </button>
           </div>
           <div className="w-full flex items-center justify-center text-white hover:transform hover:scale-110">
-            <button className="border px-4 py-1">Exit</button>
+            <button
+              className="border px-4 py-1"
+              onClick={() => route.push("/")}
+            >
+              Exit
+            </button>
           </div>
         </div>
       </div>

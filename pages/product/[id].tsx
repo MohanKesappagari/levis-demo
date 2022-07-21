@@ -3,6 +3,7 @@ import { Badge } from "antd";
 import Main from "../../components/product/Main";
 import Similar from "../../components/product/Similar";
 import Sidebar from "../../components/sidebar/Sidebar";
+import { INVENTORY } from "../../global/constants/inventory";
 
 export default function Product({ id, product }: any) {
   return (
@@ -61,13 +62,16 @@ export async function getStaticPaths() {
   };
 }
 export async function getStaticProps({ params }: any) {
-  const res = await fetch(
-    "https://storage.googleapis.com/social_images/levis_ineventory.json"
-  );
-  const resJson = await res.json();
-  const product: any = resJson.filter(
-    (val: any) => val.raw_data.id === params.id
-  );
+  // const res = await fetch(
+  //   "https://storage.googleapis.com/social_images/levis_ineventory.json"
+  // );
+  // const resJson = await res.json();
+  // const product: any = resJson.filter(
+  //   (val: any) => val.raw_data.id === params.id
+  // );
+
+  const product = INVENTORY.filter((val) => val.raw_data.id === params.id);
+
   return {
     props: {
       id: params.id,
